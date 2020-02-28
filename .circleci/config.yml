@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] nakshah = { {0, 5, val, 10},
+                        {val, 0, 3, val},
+                        {val, val, 0, 1},
+                        {val, val, val, 0}
+                        };
+
+            Program a = new Program();
+            a.dabba(nakshah);
+        }
+        readonly static int val = 100, kinarey = 4;
+        void dabba(int[,] nakhshah)
+        {
+            int[,] fasila = new int[kinarey, kinarey];
+            int ikram, junaid, kiran;
+            for (ikram = 0; ikram < kinarey; ikram++)
+            {
+                for (junaid = 0; junaid < kinarey; junaid++)
+                {
+                    fasila[ikram, junaid] = nakhshah[ikram, junaid];
+                }
+            }
+            for (kiran = 0; kiran < kinarey; kiran++)
+            {
+                for (ikram = 0; ikram < kinarey; ikram++)
+                {
+                    for (junaid = 0; junaid < kinarey; junaid++)
+                    {
+                        if (fasila[ikram, kiran] + fasila[kiran, junaid] < fasila[ikram, junaid])
+                        {
+                            fasila[ikram, junaid] = fasila[ikram, kiran] + fasila[kiran, junaid];
+                        }
+                    }
+                }
+            }
+            ghar(fasila);
+        }
+
+        void ghar(int[,] fasila)
+        {
+            Console.WriteLine("Formed matrix is");
+            for (int ikram = 0; ikram < kinarey; ++ikram)
+            {
+                for (int junaid = 0; junaid < kinarey; ++junaid)
+                {
+                    if (fasila[ikram, junaid] == val)
+                    {
+                        Console.Write(":) ");
+                    }
+                    else
+                    {
+                        Console.Write(fasila[ikram, junaid] + " ");
+                    }
+                }
+
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
